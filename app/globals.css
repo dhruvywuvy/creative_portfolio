@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.constellation-line {
+  stroke: #000000;
+  stroke-width: 1.5;
+  opacity: 0.6;
+  stroke-dasharray: 4;
+  animation: dash 20s linear infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 12s linear infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.animate-gleam {
+  animation: gleam 4s ease-in-out infinite;
+}
+
+@keyframes gleam {
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.2), 0 0 45px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.3), 0 0 60px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.star-shape {
+    clip-path: polygon(
+        50% 0%,
+        54% 35%,
+        98% 35%,
+        60% 57%,
+        72% 91%,
+        50% 70%,
+        28% 91%,
+        40% 57%,
+        2% 35%,
+        46% 35%
+    );
+    animation: twinkle 4s infinite linear;
+}
+
+/* @keyframes twinkle {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+} */
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 1000;
+    }
+}
+
