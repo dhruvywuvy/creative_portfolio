@@ -165,7 +165,7 @@ export default function ConstellationPortfolio() {
       ctx.rotate(Math.PI / 4)
 
       // Shooting star tail
-      const cursorGradient = ctx.createLinearGradient(0, 0, -20, -20)
+      const cursorGradient = ctx.createLinearGradient(20, 0, -40, -40)
       cursorGradient.addColorStop(0, "rgba(248, 248, 248, 0.8)")
       cursorGradient.addColorStop(1, "rgba(16, 156, 226, 0)")
       ctx.strokeStyle = cursorGradient
@@ -194,8 +194,8 @@ export default function ConstellationPortfolio() {
   }, [mousePos])
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-white">
-      <canvas ref={canvasRef} className="absolute inset-0" />
+    <div className="relative w-screen h-screen overflow-hidden bg-white cursor-">
+      <canvas ref={canvasRef} className="absolute inset-0 cursor-" />
 
       {/* Add this new div for social icons */}
       <div className="absolute top-8 right-8 flex gap-6 z-20">
@@ -313,7 +313,7 @@ export default function ConstellationPortfolio() {
           </div>
 
           {/* Container for stars */}
-          <div className="relative w-[800px] h-[400px]">
+          <div className="relative w-[300px] sm:w-[800px] h-[400px]">
             {experiences.map((exp, index) => (
               <div
                 key={index}
@@ -327,6 +327,7 @@ export default function ConstellationPortfolio() {
                   className="relative"
                   onHoverStart={() => setHoveredStar(index)}
                   onHoverEnd={() => setHoveredStar(null)}
+                  whileHover={{ scale: 1.1 }}
                 >
                   <div className="w-4 h-4 relative">
                     <div className="absolute inset-0 star-shape bg-white animate-pulse-fast">
@@ -337,10 +338,12 @@ export default function ConstellationPortfolio() {
                     <motion.div
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0, opacity: 0 }}
+                      transition={{ duration: 0.1 }}
                       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
                     >
                       <div className="transform scale-75">
-                        <Card className="w-[600px] border-2 border-dotted border-white rounded-2xl">
+                        <Card className="w-[280px] sm:w-[600px] border-2 border-dotted border-white rounded-2xl">
                           <CardContent className="p-4">
                             <div className="flex items-center justify-between mb-4">
                               <div className="flex items-center gap-4">
